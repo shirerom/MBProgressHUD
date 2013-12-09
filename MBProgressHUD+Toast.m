@@ -31,6 +31,28 @@
 	[hud hide:YES afterDelay:1.5];
 }
 
++ (void)toastWithCheckmarkInView:(UIView *)view text:(NSString *)text
+{
+	static NSInteger toastTag = 44883; // 44883 == "hud" on cell keyboard
+	
+	MBProgressHUD* hud = [MBProgressHUD subviewFromView:view withTag:toastTag];
+	
+	if (hud == nil) {
+		
+		hud = [[MBProgressHUD alloc] initWithView:view];
+		hud.tag = toastTag;
+		hud.mode = MBProgressHUDModeCustomView;
+		hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+		
+		[view addSubview:hud];
+	}
+	
+	hud.labelText = text;
+	
+	[hud show:YES];
+	[hud hide:YES afterDelay:1.5];
+}
+
 + (MBProgressHUD*)subviewFromView:(UIView*)view withTag:(NSInteger)tag
 {
 	for (UIView* subview in view.subviews) {

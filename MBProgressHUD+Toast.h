@@ -11,5 +11,6 @@
 @interface MBProgressHUD (Toast)
 
 + (void)toastInView:(UIView*)view text:(NSString*)text;
++ (void)toastWithCheckmarkInView:(UIView*)view text:(NSString*)text;
 
 @end
